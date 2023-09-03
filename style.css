@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&family=Tektur:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: clamp(40%, 1% + 2vw, 62.5%);
+
+  --hue: 194;
+  --bg: hsl((var(--hue)), 40%, 98%);
+  --bg-icon: hsl(var(--hue), 11%, 83%);
+  --icon-color: hsl(var(--hue), 5%, 7%);
+  --icon-select: hsl(var(--hue), 97%, 31%);
+  --icon-hover: hsl(var(--hue), 100%, 63%);
+  --bg-card: #faf1f1;
+}
+
+html.dark {
+  --bg: hsl(194, 5%, 7%);
+  --bg-icon: hsl(194, 0%, 14%);
+  --icon-color: hsl(194, 40%, 98%);
+  --bg-card: hsl(210, 5%, 7%);
+}
+
+html.dark .ph-moon,
+html:not(.dark) .ph-sun {
+  display: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+
+  margin: -1px;
+  padding: 0px;
+  border: 0;
+  appearance: none;
+}
+
+body,
+button,
+input {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.6rem;
+}
+
+body {
+  position: relative;
+
+  display: grid;
+  place-content: center;
+  max-width: 520rem;
+  height: 100vh;
+
+  background: var(--bg);
+  color: var(--icon-color);
+}
+
+/* ==== APP ==== */
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  gap: 20rem;
+}
+
+#toggle-mode {
+  position: absolute;
+  top: 3.2rem;
+  right: 3.2rem;
+
+  font-size: 4.2rem;
+  color: var(--icon-color);
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  font-size: 6.4rem;
+  color: var(--icon-color);
+}
+
+#setup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#timer {
+  padding-top: 32rem;
+  font-family: 'Tektur', cursive;
+  font-size: 14.6rem;
+  font-weight: 500;
+  letter-spacing: 0.4rem;
+  color: var(--icon-color);
+}
+
+.flex {
+  display: flex;
+}
+
+.running .ph-play-circle,
+.running .ph-timer,
+html:not(.running) .ph-pause-circle,
+html:not(.running) .ph-stop-circle {
+  display: none;
+}
+
+#controls {
+  min-width: 42.8rem;
+  justify-content: space-around;
+}
+
+.control {
+  transition: all 0.3s ease-in-out;
+}
+
+.control:hover {
+  transform: scale(1.2);
+}
+
+/* === SONGS === */
+
+#songs {
+  min-width: 42.8rem;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8rem;
+}
+
+.song {
+  border-radius: 2.4rem;
+  padding: 0.6rem;
+  background: var(--bg-icon);
+
+  transition: all 0.3s ease-in-out;
+}
+
+.song:hover {
+  background: var(--icon-hover);
+  transform: scale(1.1);
+  box-shadow: 0 0.1rem 0.6rem rgba(0, 0, 0, 0.6);
+}
+
+.song.selected {
+  background: var(--icon-select);
+}
+
+/* === HELP === */
+
+#help {
+  position: absolute;
+  left: 3.2rem;
+  bottom: 3.2rem;
+}
+
+#help button {
+  padding: 0.8rem 1.6rem;
+  border-radius: 1.6rem;
+
+  border: 1px solid var(--icon-color);
+  background: var(--bg-icon);
+
+  font-size: 2.4rem;
+  color: var(--icon-color);
+
+  transition: all 0.3s ease-in-out;
+}
+
+#help button:hover,
+#popup button:hover {
+  background: var(--icon-hover);
+  transform: scale(1.1);
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.6);
+}
+
+/* === POPUP === */
+#popup.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+#popup {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-content: center;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+#popup .card,
+#popupTablePT .card,
+#popupTableEN .card {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 5rem 2.4rem 2.4rem;
+  border-radius: 2.4rem;
+  gap: 2.4rem;
+
+  background: var(--bg-card);
+}
+
+#popup button {
+  padding: 1.6rem 2.4rem;
+  border-radius: 1.6rem;
+
+  min-width: 26rem;
+
+  border: 1px solid var(--icon-color);
+  background: var(--bg-icon);
+
+  font-size: 2.6rem;
+  color: var(--icon-color);
+
+  transition: all 0.3s ease-in-out;
+}
+
+#popup button:nth-child(1) {
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  min-width: fit-content;
+
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* === TABLE POPUP === */
+
+#popupTablePT.open,
+#popupTableEN.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+#popupTablePT,
+#popupTableEN {
+  position: absolute;
+  inset: 0;
+
+  display: grid;
+  place-content: center;
+
+  background: rgba(0, 0, 0, 0.7);
+
+  visibility: hidden;
+  opacity: 0;
+}
+
+#popupTablePT .card,
+#popupTableEN .card {
+  padding-top: 3.8rem;
+  gap: 0;
+}
+
+.tableCloseEN,
+.tableClosePT {
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+  font-size: 3.2rem;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.tableCloseEN:hover,
+.tableClosePT:hover {
+  transform: scale(1.1);
+}
+
+#popupClose img,
+.tableCloseEN img,
+.tableClosePT img {
+  width: 3.2rem;
+}
+
+table {
+  padding: 0 0.8rem;
+  min-width: 36rem;
+
+  border-radius: 2.4rem;
+  border: 1px solid var(--icon-color);
+  color: var(--icon-color);
+  background: var(--bg);
+}
+
+h1 {
+  font-size: 3.6rem;
+  text-align: center;
+  margin-bottom: 1.6rem;
+  color: var(--icon-color);
+}
+
+.cardItem .item .ph-play-circle,
+.cardItem .item .ph-timer,
+.cardItem .item .ph-pause-circle,
+.cardItem .item .ph-stop-circle {
+  display: block;
+}
+
+table tr,
+table td i {
+  display: flex;
+  align-items: center;
+}
+
+table tr {
+  gap: 1.2rem;
+  margin: 0.4rem 0;
+}
+
+table td i {
+  font-size: 4.2rem;
+  color: var(--icon-color);
+}
+
+table td {
+  font-size: 2.2rem;
+  align-items: center;
+}
+
+/* ======== MEDIA CONTROL ===== */
+@media (min-width: 928px) {
+  #app {
+    flex-direction: row;
+    gap: 19.2rem;
+  }
+
+  #toggle-mode {
+    font-size: 3.6rem;
+  }
+
+  #setup {
+    gap: 1.9rem;
+    min-width: 38rem;
+  }
+
+  #timer {
+    padding: 0;
+
+    font-size: 12.6rem;
+    letter-spacing: 0;
+  }
+
+  #controls {
+    min-width: 35.5rem;
+    justify-content: space-between;
+  }
+
+  #songs {
+    min-width: 0;
+    max-width: 30.8rem;
+    flex-wrap: wrap;
+    gap: 3.2rem;
+    padding: 0;
+  }
+
+  .song {
+    width: 13.8rem;
+    height: 15.2rem;
+
+    border-radius: 2.4rem;
+  }
+
+  /* ==== TABLES === */
+
+  table {
+    border: 1px solid var(--icon-color);
+    border-radius: 2.4rem;
+
+    padding: 0 0.8rem;
+  }
+
+  table td i {
+    font-size: 3.2rem;
+    color: var(--icon-color);
+  }
+}
+
+@media (max-width: 378px) {
+  #app {
+    gap: 12rem;
+  }
+
+  #timer {
+    padding-top: 26rem;
+  }
+}
+
+@media (max-width: 366px) {
+  #app {
+    gap: 18rem;
+  }
+
+  #timer {
+    padding-top: 32rem;
+  }
+}

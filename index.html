@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Temporizador estilo Pomodoro" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" href="./assets/icon.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Focus Timer</title>
+  </head>
+  <body>
+    <div id="app">
+      <button id="toggle-mode">
+        <span class="sr-only">Ativar/Desativar Light Mode</span>
+        <i class="ph-bold ph-sun"></i>
+        <i class="ph-bold ph-moon"></i>
+      </button>
+
+      <div id="setup">
+        <section id="timer" class="flex">
+          <span id="minutes">00</span>
+          <span>:</span>
+          <span id="seconds">00</span>
+        </section>
+
+        <section id="controls" class="flex">
+          <button data-action="toggleRunning" class="control ph ph-play-circle">
+            <span class="sr-only">Iniciar contador.</span>
+          </button>
+          <button
+            data-action="toggleRunning"
+            class="control ph ph-pause-circle"
+          >
+            <span class="sr-only">Pausar contador.</span>
+          </button>
+          <button data-action="set" class="control ph ph-timer">
+            <span class="sr-only">Ajustar contador.</span>
+          </button>
+          <button data-action="reset" class="control ph ph-stop-circle">
+            <span class="sr-only">Reiniciar contador.</span>
+          </button>
+          <button
+            data-action="fiveMinutes"
+            id="plusFive"
+            class="control ph ph-plus-circle"
+          >
+            <span class="sr-only">Adicionar 05 minutos.</span>
+          </button>
+          <button
+            data-action="fiveMinutes"
+            id="minusFive"
+            class="control ph ph-minus-circle"
+          >
+            <span class="sr-only">Subtrair 05 minutos.</span>
+          </button>
+        </section>
+      </div>
+
+      <section id="songs" class="flex">
+        <button id="forestBtn" class="song ph ph-tree">
+          <span class="sr-only">Sons de floresta.</span>
+        </button>
+        <button id="rainBtn" class="song ph ph-cloud-snow">
+          <span class="sr-only">Sons de chuva.</span>
+        </button>
+        <button id="storeBtn" class="song ph ph-storefront">
+          <span class="sr-only">Sons de lojas.</span>
+        </button>
+        <button id="fireBtn" class="song ph ph-fire">
+          <span class="sr-only">Sons de fogueira.</span>
+        </button>
+      </section>
+
+      <section id="help">
+        <button>Help</button>
+      </section>
+    </div>
+
+    <section id="popup">
+      <div class="card">
+        <button id="popupClose"><img id="svgClose" src="./assets/close.svg" alt="" /></button>
+        <button id="helpEN">English</button>
+        <button id="helpPT">Português</button>
+      </div>
+    </section>
+
+    <section id="popupTablePT">
+      <div class="card">
+        <button class="tableClosePT">
+          <img src="./assets/close.svg" alt="" />
+        </button>
+        <table>
+          <tr>
+            <h1>Funcionalidades</h1>
+          </tr>
+          <tr class="cardItem">
+            <td class="item"><i class="ph ph-play-circle"></i></td>
+            <td>Inicia o contador.</td>
+          </tr>
+          <tr class="cardItem">
+            <td class="item">
+              <i class="ph ph-pause-circle"></i>
+            </td>
+            <td>Pausa o contador.</td>
+          </tr>
+          <tr class="cardItem">
+            <td class="item"><i class="ph ph-timer"></i></td>
+            <td>Edita o contador.</td>
+          </tr>
+          <tr class="cardItem">
+            <td class="item"><i class="ph ph-stop-circle"></i></td>
+            <td>Reseta o contador.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-plus-circle"></i></td>
+            <td>Adiciona 05 minutos ao tempo.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-minus-circle"></i></td>
+            <td>Subtrai 05 minutos ao tempo.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-tree"></i></td>
+            <td>Sons de uma floresta.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-cloud-snow"></i></td>
+            <td>Sons de chuva.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-storefront"></i></td>
+            <td>Inicia uma trilha sonora.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-fire"></i></td>
+            <td>Sons de fogueira.</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="popupTableEN">
+      <div class="card">
+        <button class="tableCloseEN">
+          <img src="./assets/close.svg" alt="" />
+        </button>
+        <table>
+          <tr>
+            <h1>Functions</h1>
+          </tr>
+          <tr class="cardItem">
+            <td class="item"><i class="ph ph-play-circle"></i></td>
+            <td>Start the counter.</td>
+          </tr>
+          <tr class="cardItem">
+            <td class="item">
+              <i class="ph ph-pause-circle"></i>
+            </td>
+            <td>Pause the counter.</td>
+          </tr>
+          <tr class="cardItem">
+            <td class="item"><i class="ph ph-timer"></i></td>
+            <td>Edit the counter.</td>
+          </tr>
+          <tr class="cardItem">
+            <td class="item"><i class="ph ph-stop-circle"></i></td>
+            <td>Reset the counter.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-plus-circle"></i></td>
+            <td>Adds 05 min to time.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-minus-circle"></i></td>
+            <td>Subtract 05 min from time.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-tree"></i></td>
+            <td>Forest sounds.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-cloud-snow"></i></td>
+            <td>Rain sounds.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-storefront"></i></td>
+            <td>Starts a soundtrack.</td>
+          </tr>
+          <tr>
+            <td><i class="ph ph-fire"></i></td>
+            <td>Campfire sounds.</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
