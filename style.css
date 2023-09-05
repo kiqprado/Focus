@@ -71,6 +71,17 @@ body {
   gap: 20rem;
 }
 
+#fullScreen {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+
+  font-size: 2.2rem;
+  color: var(--icon-color);
+
+  transition: all 0.3s ease-in-out;
+}
+
 #toggle-mode {
   position: absolute;
   top: 1.2rem;
