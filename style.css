@@ -50,8 +50,12 @@ input {
 }
 
 body {
+  position: relative;
+
   display: grid;
   place-content: center;
+  width: 100%;
+  margin: 0 auto;
 
   background: var(--bg);
   color: var(--icon-color);
@@ -60,15 +64,16 @@ body {
 /* ==== APP ==== */
 
 #app {
-  position: relative;
   width: 100%;
   height: 100vh;
+
+  padding: 0 2.4rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  gap: 20rem;
+  gap: 12rem;
 }
 
 #fullScreen {
@@ -84,8 +89,8 @@ body {
 
 #toggle-mode {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
+  top: 2.4rem;
+  right: 2.4rem;
 
   font-size: 4.2rem;
   color: var(--icon-color);
@@ -107,7 +112,7 @@ button {
 }
 
 #timer {
-  padding-top: 32rem;
+  padding-top: 38rem;
   font-family: 'Tektur', cursive;
   font-size: 14.6rem;
   font-weight: 500;
@@ -170,8 +175,8 @@ html:not(.running) .ph-stop-circle {
 
 #help {
   position: absolute;
-  left: 1.2rem;
-  bottom: 3.2rem;
+  left: 2.4rem;
+  bottom: 9.6rem;
 }
 
 #help button {
@@ -352,12 +357,18 @@ table td {
 /* ======== MEDIA CONTROL ===== */
 @media (min-width: 928px) {
   #app {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+
+    justify-content: center;
     flex-direction: row;
     gap: 19.2rem;
   }
 
   #toggle-mode {
     font-size: 3.6rem;
+    position: absolute;
   }
 
   #setup {
@@ -392,6 +403,10 @@ table td {
     border-radius: 2.4rem;
   }
 
+  #help {
+    left: 3.2rem;
+    bottom: 3.2rem;
+  }
   /* ==== TABLES === */
 
   table {
@@ -408,21 +423,37 @@ table td {
 }
 
 @media (max-width: 378px) {
+  #timer {
+    padding-top: 40rem;
+  }
+
   #app {
-    gap: 12rem;
+    gap: 8rem;
   }
 
   #timer {
-    padding-top: 26rem;
+    padding-top: 29.6rem;
+  }
+
+  #songs {
+    justify-content: space-around;
+  }
+
+  #songs .song {
+    font-size: 5.6rem;
   }
 }
 
 @media (max-width: 366px) {
   #app {
-    gap: 18rem;
+    gap: 16rem;
   }
 
   #timer {
-    padding-top: 32rem;
+    padding-top: 34rem;
+  }
+
+  #songs {
+    justify-content: space-between;
   }
 }
