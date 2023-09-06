@@ -17,7 +17,8 @@
         <i class="ph-bold ph-moon"></i>
       </button>
 
-      <!-- <button id="fullScreen">Tela cheia</button> -->
+      <!-- <button id="fullScreen">Tela cheia</button>
+          <span class="sr-only">Ativar/Desativar Tela cheia</span> -->
 
       <div id="setup">
         <section id="timer" class="flex">
@@ -75,23 +76,34 @@
       </section>
 
       <section id="help">
-        <button>Help</button>
+        <button>
+          Help
+          <span class="sr-only">Botão de ajuda</span>
+        </button>
       </section>
     </div>
 
     <section id="popup">
       <div class="card">
         <button id="popupClose">
+          <span class="sr-only">Botão de fechar a janela de ajuda.</span>
           <img id="svgClose" src="./assets/close.svg" alt="" />
         </button>
-        <button id="helpEN">English</button>
-        <button id="helpPT">Português</button>
+        <button id="helpEN">
+          English
+          <span class="sr-only">Dicas de botões em Inglês.</span>
+        </button>
+        <button id="helpPT">
+          Português
+          <span class="sr-only">Dicas de botões em Português.</span>
+        </button>
       </div>
     </section>
 
     <section id="popupTablePT">
       <div class="card">
         <button class="tableClosePT">
+          <span class="sr-only">Fechar a tabela de dicas.</span>
           <img src="./assets/close.svg" alt="" />
         </button>
         <table>
@@ -147,6 +159,7 @@
     <section id="popupTableEN">
       <div class="card">
         <button class="tableCloseEN">
+          <span class="sr-only">Fechar a tabela de dicas.</span>
           <img src="./assets/close.svg" alt="" />
         </button>
         <table>
