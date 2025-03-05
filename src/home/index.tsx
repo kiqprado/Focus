@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 import { Play, Pause, Square, Plus, Minus, Shrub, CloudHail, FlameKindling, Store } from 'lucide-react'
 
@@ -7,7 +7,9 @@ import { ButtonTimer } from "../elements/button-timer"
 import { ButtonTheme } from '../elements/button-theme'
 export function App() {
   const [onPlay, setOnPlay ] = useState(false)
-  const [timeToSpend, setTimeToSpend] = useState(3000)
+  const [timeToSpend, setTimeToSpend] = useState(1800)
+
+  const intervalRef = useRef<number | null>(null)
 
   function HandlePlayerTimer() {
     setOnPlay((prev) => !prev)
@@ -15,13 +17,40 @@ export function App() {
 
   function HandleResetTimer() {
     setOnPlay(false)
-    setTimeToSpend(3000)
+    setTimeToSpend(1800)
   }
+
+  function HandleDecrementTime() {
+    setTimeToSpend((prev) => (prev >= 300 ? prev - 300 : 0))
+  }
+
+  function HandleIncrementTime() {
+    setTimeToSpend((prev) => (prev <= 5700 ? prev + 300 : 6000))
+  }
+
+  useEffect(() => {
+    if(!onPlay) {
+      if(intervalRef.current !== null) {
+        clearInterval(intervalRef.current)
+      }
+      return
+    }
+
+    intervalRef.current = setInterval(() => {
+      setTimeToSpend((prev) => (prev > 0 ? prev - 1 : 0))
+    }, 1000)
+
+    return () => {
+      if(intervalRef.current!== null) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  },[onPlay])
 
   return (
     <div>
       <div className='h-screen flex items-center justify-center gap-16'>
-        <div className='flex flex-col gap-6'>
+        <div className='flex flex-col gap-6 px-4'>
           <DisplayTimer
             timeToSpend={timeToSpend}
           />
@@ -30,7 +59,7 @@ export function App() {
             <ButtonTimer
               onClick={HandlePlayerTimer}
             >
-             { onPlay ? <Play/> : <Pause/>}
+             { onPlay ? <Pause/> : <Play/> }
             </ButtonTimer>
 
             <ButtonTimer
@@ -39,12 +68,16 @@ export function App() {
              <Square/>
             </ButtonTimer>
 
-            <ButtonTimer>
-             <Plus/>
+            <ButtonTimer
+              onClick={HandleDecrementTime}
+            >
+             <Minus/>
             </ButtonTimer>
 
-            <ButtonTimer>
-             <Minus/>
+            <ButtonTimer
+              onClick={HandleIncrementTime}
+            >
+             <Plus/>
             </ButtonTimer>
           </div>
         </div>
