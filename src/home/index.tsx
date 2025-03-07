@@ -6,10 +6,12 @@ import { DisplayTimer } from "../timer/display"
 import { ButtonTimer } from "../elements/button-timer"
 import { ButtonTheme } from '../elements/button-theme'
 export function App() {
-  const [onPlay, setOnPlay ] = useState(false)
-  const [timeToSpend, setTimeToSpend] = useState(1800)
+  const [ onPlay, setOnPlay ] = useState(false)
+  const [ timeToSpend, setTimeToSpend ] = useState(1800)
 
   const intervalRef = useRef<number | null>(null)
+
+  const [ songOnPlay, setSongOnPlay ] = useState(false)
 
   function HandlePlayerTimer() {
     setOnPlay((prev) => !prev)
@@ -26,6 +28,10 @@ export function App() {
 
   function HandleIncrementTime() {
     setTimeToSpend((prev) => (prev <= 5700 ? prev + 300 : 6000))
+  }
+
+  function HandleSongPlaying() {
+    setSongOnPlay((prev) => !prev)
   }
 
   useEffect(() => {
@@ -83,19 +89,31 @@ export function App() {
         </div>
 
         <div className='max-w-48 flex gap-4 flex-wrap'>
-          <ButtonTheme>
+          <ButtonTheme
+            songOnPlay={songOnPlay}
+            onClick={HandleSongPlaying}
+          >
             <FlameKindling className='size-10'/>
           </ButtonTheme>
 
-          <ButtonTheme>
+          <ButtonTheme
+            songOnPlay={songOnPlay}
+            onClick={HandleSongPlaying}
+          >
             <CloudHail className='size-10'/>
           </ButtonTheme>
 
-          <ButtonTheme>
+          <ButtonTheme
+            songOnPlay={songOnPlay}
+            onClick={HandleSongPlaying}
+          >
             <Shrub className='size-10'/>
           </ButtonTheme>
 
-          <ButtonTheme>
+          <ButtonTheme
+            songOnPlay={songOnPlay}
+            onClick={HandleSongPlaying}
+          >
             <Store className='size-10'/>
           </ButtonTheme>
         </div>
