@@ -1,17 +1,18 @@
 import { useState, useEffect, useRef } from 'react'
 
-import { Play, Pause, Square, Plus, Minus, Shrub, CloudHail, FlameKindling, Store } from 'lucide-react'
+import { Play, Pause, Square, Plus, Minus } from 'lucide-react'
 
 import { DisplayTimer } from "../timer/display"
 import { ButtonTimer } from "../elements/button-timer"
-import { ButtonTheme } from '../elements/button-theme'
+import { ButtonTheme, buttons } from '../elements/button-theme'
+
 export function App() {
   const [ onPlay, setOnPlay ] = useState(false)
   const [ timeToSpend, setTimeToSpend ] = useState(1800)
 
   const intervalRef = useRef<number | null>(null)
 
-  const [ songOnPlay, setSongOnPlay ] = useState(false)
+  const [ activeSongPlaying, setActiveSongPlaying ] = useState<number | null>(null)
 
   function HandlePlayerTimer() {
     setOnPlay((prev) => !prev)
@@ -30,8 +31,8 @@ export function App() {
     setTimeToSpend((prev) => (prev <= 5700 ? prev + 300 : 6000))
   }
 
-  function HandleSongPlaying() {
-    setSongOnPlay((prev) => !prev)
+  function HandleSongPlaying(index: number) {
+    setActiveSongPlaying((prev) => (prev === index ? null : index))
   }
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export function App() {
       }
       return
     }
-
+    
     intervalRef.current = setInterval(() => {
       setTimeToSpend((prev) => (prev > 0 ? prev - 1 : 0))
     }, 1000)
@@ -88,36 +89,19 @@ export function App() {
           </div>
         </div>
 
-        <div className='max-w-48 flex gap-4 flex-wrap'>
-          <ButtonTheme
-            songOnPlay={songOnPlay}
-            onClick={HandleSongPlaying}
-          >
-            <FlameKindling className='size-10'/>
-          </ButtonTheme>
-
-          <ButtonTheme
-            songOnPlay={songOnPlay}
-            onClick={HandleSongPlaying}
-          >
-            <CloudHail className='size-10'/>
-          </ButtonTheme>
-
-          <ButtonTheme
-            songOnPlay={songOnPlay}
-            onClick={HandleSongPlaying}
-          >
-            <Shrub className='size-10'/>
-          </ButtonTheme>
-
-          <ButtonTheme
-            songOnPlay={songOnPlay}
-            onClick={HandleSongPlaying}
-          >
-            <Store className='size-10'/>
-          </ButtonTheme>
+        <div className="max-w-48 flex gap-4 flex-wrap">
+          {buttons.map((button, index) => (
+            <ButtonTheme
+              key={index}
+              icon={button.icon}
+              music={button.music}
+              songOnPlay={activeSongPlaying === index}
+              onClick={() => HandleSongPlaying(index)}
+          />
+          ))}
         </div>
       </div>
     </div>
   )
 }
+
