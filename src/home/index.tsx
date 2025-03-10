@@ -4,7 +4,8 @@ import { Play, Pause, Square, Plus, Minus } from 'lucide-react'
 
 import { DisplayTimer } from "../timer/display"
 import { ButtonTimer } from "../elements/button-timer"
-import { ButtonTheme, themes } from '../elements/button-theme'
+import { themes } from '../elements/themes'
+import { ButtonTheme } from '../elements/button-theme'
 
 export function App() {
   const [ onPlay, setOnPlay ] = useState(false)

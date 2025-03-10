@@ -1,19 +1,10 @@
 import { ComponentProps, ReactNode } from "react";
 
-import { FlameKindling, CloudHail, Shrub, Store } from 'lucide-react'
-
 interface ButtonThemeProps extends ComponentProps<"button"> {
   icon: ReactNode;
   music: string;
   songOnPlay?: boolean;
 }
-
-export const themes: ButtonThemeProps[] = [
-  { icon: <FlameKindling className="size-10" />, music: "/sounds/fire.mp3" },
-  { icon: <CloudHail className="size-10" />, music: "/sounds/rain.mp3" },
-  { icon: <Shrub className="size-10" />, music: "/sounds/fire.mp3" },
-  { icon: <Store className="size-10" />, music: "/sounds/fire.mp3" },
-];
 
 export function ButtonTheme({ 
   icon, 
@@ -29,4 +20,4 @@ export function ButtonTheme({
       {icon}
     </button>
   )
-} 
+}
