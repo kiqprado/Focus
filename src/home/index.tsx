@@ -70,12 +70,12 @@ export function App() {
   return (
     <div>
       <div className='h-screen flex items-center justify-center gap-16'>
-        <div className='flex flex-col gap-6 px-4'>
+        <div className='flex flex-col items-center gap-6 px-4'>
           <DisplayTimer
             timeToSpend={timeToSpend}
           />
 
-          <div className='flex items-center justify-between px-2'>
+          <div className='w-full flex justify-between px-8'>
             <ButtonTimer
               onClick={HandlePlayerTimer}
             >
