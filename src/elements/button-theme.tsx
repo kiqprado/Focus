@@ -8,11 +8,11 @@ interface ButtonThemeProps extends ComponentProps<"button"> {
   songOnPlay?: boolean;
 }
 
-export const buttons: ButtonThemeProps[] = [
-  { icon: <FlameKindling className="size-10" />, music: "../sounds/fire.mp3" },
-  { icon: <CloudHail className="size-10" />, music: "../sounds/rain.mp3" },
-  { icon: <Shrub className="size-10" />, music: "../sounds/fire.mp3" },
-  { icon: <Store className="size-10" />, music: "../sounds/rain.mp3" },
+export const themes: ButtonThemeProps[] = [
+  { icon: <FlameKindling className="size-10" />, music: "/sounds/fire.mp3" },
+  { icon: <CloudHail className="size-10" />, music: "/sounds/rain.mp3" },
+  { icon: <Shrub className="size-10" />, music: "/sounds/fire.mp3" },
+  { icon: <Store className="size-10" />, music: "/sounds/fire.mp3" },
 ];
 
 export function ButtonTheme({ 

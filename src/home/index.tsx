@@ -4,7 +4,7 @@ import { Play, Pause, Square, Plus, Minus } from 'lucide-react'
 
 import { DisplayTimer } from "../timer/display"
 import { ButtonTimer } from "../elements/button-timer"
-import { ButtonTheme, buttons } from '../elements/button-theme'
+import { ButtonTheme, themes } from '../elements/button-theme'
 
 export function App() {
   const [ onPlay, setOnPlay ] = useState(false)
@@ -13,6 +13,7 @@ export function App() {
   const intervalRef = useRef<number | null>(null)
 
   const [ activeSongPlaying, setActiveSongPlaying ] = useState<number | null>(null)
+  const [ audioTheme, setAudioTheme ] = useState<HTMLAudioElement | null>(null)
 
   function HandlePlayerTimer() {
     setOnPlay((prev) => !prev)
@@ -32,7 +33,18 @@ export function App() {
   }
 
   function HandleSongPlaying(index: number) {
-    setActiveSongPlaying((prev) => (prev === index ? null : index))
+    if(activeSongPlaying === index) {
+      audioTheme?.pause()
+      setActiveSongPlaying(null)
+      setAudioTheme(null)
+    } else {
+      audioTheme?.pause()
+      const newAudio = new Audio(themes[index].music)
+      newAudio.loop = true
+      newAudio.play()
+      setAudioTheme(newAudio)
+      setActiveSongPlaying(index)
+    }
   }
 
   useEffect(() => {
@@ -90,11 +102,11 @@ export function App() {
         </div>
 
         <div className="max-w-48 flex gap-4 flex-wrap">
-          {buttons.map((button, index) => (
+          {themes.map((theme, index) => (
             <ButtonTheme
               key={index}
-              icon={button.icon}
-              music={button.music}
+              icon={theme.icon}
+              music={theme.music}
               songOnPlay={activeSongPlaying === index}
               onClick={() => HandleSongPlaying(index)}
           />
