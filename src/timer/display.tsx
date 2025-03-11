@@ -11,7 +11,7 @@ export function DisplayTimer({ timeToSpend } : DisplayTimer) {
   const formattedTime = format(time, 'mm:ss')
   
   return (
-      <h1 className='min-w-108 text-9xl text-center text-blue-100 tracking-wider'>
+      <h1 className='min-w-108 text-9xl text-center text-blue-100 tracking-wider tabular-nums'>
         {formattedTime}
       </h1>
   )

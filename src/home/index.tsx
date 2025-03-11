@@ -75,7 +75,7 @@ export function App() {
             timeToSpend={timeToSpend}
           />
 
-          <div className='w-full flex justify-between px-8'>
+          <div className='w-full flex justify-between pl-6 pr-8'>
             <ButtonTimer
               onClick={HandlePlayerTimer}
             >
