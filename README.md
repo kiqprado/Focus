@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Focus
 
 *A perfect companion to manage time on your important study journey.*
@@ -137,3 +138,7 @@ This project is licensed under the MIT License.[LICENSE](LICENSE)
 [Rocketseat](https://www.rocketseat.com.br/) | [LinkedIn](https://www.linkedin.com/school/rocketseat)
 
 -*A big thank you to RocketSeat for creating the project with the initial stacks of a Web Dev. In this version, I chose the technologies I have an affinity for to reinvent some functions and, according to my vision, create this project to help people on their study journeys.*
+=======
+App Description:
+Introducing a sophisticated app designed to enhance your study sessions by incorporating the renowned Pomodoro Technique. This intuitive tool helps you maintain focus, boost productivity, and achieve your academic goals with ease. Set customizable timers, track your progress, and enjoy a seamless study experience tailored to your needs. Elevate your learning journey with this essential productivity companion.
+>>>>>>> a07b458a20cef23102ec69dd95c80adcf28cf19f
