@@ -21,16 +21,18 @@
 ---
 
 ## About the Project
-
-**Focus**  Introducing a sophisticated app designed to enhance your study sessions by incorporating the renowned Pomodoro Technique. 
+<div style="text-align: justify">
+**Focus**  
+Introducing a sophisticated app designed to enhance your study sessions by incorporating the renowned Pomodoro Technique. 
 This intuitive tool helps you to achieve your academic goals with ease. Set customizable timers, track your progress, and enjoy a seamless study experience tailored to your needs. Elevate your learning journey with this essential productivity companion.
+<div/>
 
 ### why did we create Focus?
 - To helps you maintain focus.
 - Boost productivity with a practical app.
 - Friendly interface with just a few clicks.
 
-###### Now that you know, hope you enjoy it! [Focus](https://keeponfocus.netlify.app/)
+#### Now that you know, hope you enjoy it! [Focus](https://keeponfocus.netlify.app/)
 
 ---
 
