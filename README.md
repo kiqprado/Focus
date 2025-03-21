@@ -30,6 +30,8 @@ This intuitive tool helps you to achieve your academic goals with ease. Set cust
 - Boost productivity with a practical app.
 - Friendly interface with just a few clicks.
 
+###### Now that you know, hope you enjoy it! [Focus](https://keeponfocus.netlify.app/)
+
 ---
 
 ## Tecs
