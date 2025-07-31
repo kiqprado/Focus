@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
 
-import { Play, Pause, Square, Plus, Minus } from 'lucide-react'
-
 import { DisplayTimer } from "../timer/display"
+
 import { ButtonTimer } from "../elements/button-timer"
 import { themes } from '../elements/themes'
 import { ButtonTheme } from '../elements/button-theme'
+
+import { useMediaRange } from '../utils/breakpoint-hook'
+
+import { Play, Pause, Square, Plus, Minus } from 'lucide-react'
 
 export function App() {
   const [ onPlay, setOnPlay ] = useState(false)
@@ -15,6 +18,17 @@ export function App() {
 
   const [ activeSongPlaying, setActiveSongPlaying ] = useState<number | null>(null)
   const [ audioTheme, setAudioTheme ] = useState<HTMLAudioElement | null>(null)
+
+  //Query's Media Range
+  const isMobileSM = useMediaRange('mobileSM')
+  const isMobileMD = useMediaRange('mobileMD')
+  const isMobileLG = useMediaRange('mobileLG')
+  const isTabletMD = useMediaRange('tabletMD')
+  const isTabletLG = useMediaRange('tabletLG')
+
+  const mobileRangeFull = isMobileSM || isMobileMD || isMobileLG
+  const tabletRangeFull = isTabletMD || isTabletLG
+  // const desktopRange = !mobileRangeFull && !tabletRangeFull
 
   function HandlePlayerTimer() {
     setOnPlay((prev) => !prev)
@@ -68,14 +82,18 @@ export function App() {
   },[onPlay])
 
   return (
-    <div>
-      <div className='h-screen flex items-center justify-center gap-16'>
-        <div className='flex flex-col items-center gap-6 px-4'>
+    <div className='h-svh flex'>
+      <div 
+        className={`flex w-full ${mobileRangeFull || tabletRangeFull ? 'flex-col' : 'flex-row'} 
+          gap-16 items-center justify-center relative`}
+      >
+        <div 
+          className={`flex flex-col items-center gap-6`}
+        >
           <DisplayTimer
             timeToSpend={timeToSpend}
           />
-
-          <div className='w-full flex justify-between pl-6 pr-8'>
+          <div className={`w-full flex justify-around`}>
             <ButtonTimer
               onClick={HandlePlayerTimer}
             >
@@ -102,7 +120,12 @@ export function App() {
           </div>
         </div>
 
-        <div className="max-w-48 flex gap-4 flex-wrap">
+        <div 
+          className={`flex gap-6 
+            ${mobileRangeFull || tabletRangeFull ? 'flex-wrap' : 'flex-wrap max-w-56'}
+            ${mobileRangeFull || tabletRangeFull ? 'absolute bottom-12' : ''}
+            items-center justify-center`}
+        >
           {themes.map((theme, index) => (
             <ButtonTheme
               key={index}
@@ -110,7 +133,7 @@ export function App() {
               music={theme.music}
               songOnPlay={activeSongPlaying === index}
               onClick={() => HandleSongPlaying(index)}
-          />
+            />
           ))}
         </div>
       </div>
