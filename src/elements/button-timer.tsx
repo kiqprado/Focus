@@ -20,11 +20,14 @@ export function ButtonTimer({ children, ...props }: ButtonTimerProps ) {
   return (
     <button
       {...props}
-      className={`flex items-center justify-center 
+      className={`flex items-center justify-center relative overflow-hidden
         ${mobileRangeFull || tabletRangeFull ? 'px-4 py-2' : 'p-2'}
-      text-cyan-200 hover:text-cyan-300 border rounded-lg`}
+        text-cyan-200 border rounded-lg transition-all duration-300 ease-in-out
+        bg-gradient-to-r from-cyan-950 via-cyan-800 to-cyan-950
+        hover:brightness-125 hover:scale-105 active:scale-95 active:brightness-150
+      `}
     >
-      {children}
+      <span className="relative z-10">{children}</span>
     </button>
   )
 }

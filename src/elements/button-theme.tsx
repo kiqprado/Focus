@@ -25,13 +25,24 @@ export function ButtonTheme({
   const tabletRangeFull = isTabletMD || isTabletLG
 
   return (
-    <button 
-      {...props} 
-      className={`${mobileRangeFull || tabletRangeFull ? 'w-36 h-16' : 'h-24 w-22'} 
-        flex items-center justify-center border rounded-lg 
-        ${songOnPlay ? 'bg-cyan-600' : ' bg-cyan-200' } hover:bg-cyan-300 text-cyan-900`}
-    >
-      {icon}
-    </button>
+   <button
+    {...props}
+    className={`
+      ${mobileRangeFull || tabletRangeFull ? 'w-36 h-16' : 'h-24 w-22'} 
+      flex items-center justify-center rounded-lg transition-all duration-300 ease-in-out transform
+      text-white
+      ${songOnPlay 
+        ? 'bg-gradient-to-br from-fuchsia-700 via-purple-600 to-fuchsia-700 shadow-[0_0_12px_rgba(232,121,249,0.5)]' 
+        : 'bg-gradient-to-br from-cyan-700 via-cyan-500 to-cyan-700 shadow-[0_0_10px_rgba(34,211,238,0.4)]'
+      }
+      hover:brightness-125 hover:scale-105 
+      active:scale-100 active:brightness-150 
+      active:shadow-[0_0_20px_rgba(255,255,255,0.5)]
+      border border-white/20
+    `}
+  >
+    {icon}
+  </button>
+
   )
 }

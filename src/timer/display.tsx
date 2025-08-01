@@ -25,7 +25,7 @@ export function DisplayTimer({ timeToSpend } : DisplayTimer) {
   return (
       <h1 
         className={`text-9xl ${mobileRangeFull || tabletRangeFull ? '' : 'tracking-wider'}
-          text-blue-100  tabular-nums`}
+          text-blue-100  tabular-nums text-neon`}
       >
         {formattedTime}
       </h1>

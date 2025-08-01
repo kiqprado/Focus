@@ -96,24 +96,28 @@ export function App() {
           <div className={`w-full flex justify-around`}>
             <ButtonTimer
               onClick={HandlePlayerTimer}
+              title='Play / Pause'
             >
-             { onPlay ? <Pause/> : <Play/> }
+              { onPlay ? <Pause/> : <Play/> }
             </ButtonTimer>
 
             <ButtonTimer
               onClick={HandleResetTimer}
+              title='Stop'
             >
              <Square/>
             </ButtonTimer>
 
             <ButtonTimer
               onClick={HandleDecrementTime}
+              title='Sub 5 min'
             >
              <Minus/>
             </ButtonTimer>
 
             <ButtonTimer
               onClick={HandleIncrementTime}
+              title='Add 5 min'
             >
              <Plus/>
             </ButtonTimer>
@@ -123,11 +127,12 @@ export function App() {
         <div 
           className={`flex gap-6 
             ${mobileRangeFull || tabletRangeFull ? 'flex-wrap' : 'flex-wrap max-w-56'}
-            ${mobileRangeFull || tabletRangeFull ? 'absolute bottom-12' : ''}
+            ${mobileRangeFull || tabletRangeFull ? 'absolute bottom-8' : ''}
             items-center justify-center`}
         >
           {themes.map((theme, index) => (
             <ButtonTheme
+              title='Music Theme'
               key={index}
               icon={theme.icon}
               music={theme.music}

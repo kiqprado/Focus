@@ -11,3 +11,11 @@ html, body, #root {
   height: 100%;
   min-height: 100dvh;
 }
+
+.text-neon {
+  color: #ffffff;
+  text-shadow:
+    0 0 2px #67e8f9,
+    0 0 4px #22d3ee,
+    0 0 6px #06b6d4;
+}
