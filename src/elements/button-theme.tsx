@@ -28,7 +28,7 @@ export function ButtonTheme({
    <button
     {...props}
     className={`
-      ${mobileRangeFull || tabletRangeFull ? 'w-36 h-16' : 'h-24 w-22'} 
+      ${mobileRangeFull || tabletRangeFull ? 'w-26 h-12' : 'h-24 w-22'} 
       flex items-center justify-center rounded-lg transition-all duration-300 ease-in-out transform
       text-white
       ${songOnPlay 

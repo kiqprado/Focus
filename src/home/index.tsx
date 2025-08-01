@@ -126,7 +126,7 @@ export function App() {
 
         <div 
           className={`flex gap-6 
-            ${mobileRangeFull || tabletRangeFull ? 'flex-wrap' : 'flex-wrap max-w-56'}
+            ${mobileRangeFull || tabletRangeFull ? 'flex-wrap max-w-66' : 'flex-wrap max-w-56'}
             ${mobileRangeFull || tabletRangeFull ? 'absolute bottom-8' : ''}
             items-center justify-center`}
         >
